@@ -7,7 +7,6 @@ class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
     return <div>help</div>;
   }
 }
