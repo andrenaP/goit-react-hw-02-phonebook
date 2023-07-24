@@ -28,3 +28,8 @@ const ContactInput = ({ Submit, handleChange }) => {
 };
 
 export default ContactInput;
+
+ContactInput.propTypes = {
+  Submit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};

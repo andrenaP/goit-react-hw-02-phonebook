@@ -26,3 +26,9 @@ const ContactForm = ({ contacts, filter, DoDelete }) => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.string.isRequired),
+  filter: PropTypes.string.isRequired,
+  DoDelete: PropTypes.func.isRequired,
+};

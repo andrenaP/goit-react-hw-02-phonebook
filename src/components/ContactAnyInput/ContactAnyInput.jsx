@@ -25,3 +25,12 @@ const ContactAnyInput = ({
 };
 
 export default ContactAnyInput;
+
+ContactAnyInput.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  pattern: PropTypes.string,
+  title: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
+  LableText: PropTypes.string,
+};
