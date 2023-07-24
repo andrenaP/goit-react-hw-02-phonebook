@@ -13,7 +13,7 @@ class App extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    const { contacts, name, number } = this.state;
+    const { contacts, name } = this.state;
     for (let contact of contacts) {
       if (contact.name === name) {
         window.alert(`Name: ${name} is already in contacts`);
@@ -48,7 +48,7 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, name, number, filter } = this.state;
+    const { contacts, filter } = this.state;
     return (
       <div>
         <Section title="Phonebook">
