@@ -33,6 +33,16 @@ class App extends Component {
     });
   };
 
+  DoDelete = feedbackType => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.name !== feedbackType
+        ),
+      };
+    });
+  };
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -49,7 +59,11 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter handleChange={this.handleChange} />
-          <ContactList contacts={contacts} filter={filter} />
+          <ContactList
+            contacts={contacts}
+            filter={filter}
+            DoDelete={this.DoDelete}
+          />
         </Section>
       </div>
     );
