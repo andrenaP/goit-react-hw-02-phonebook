@@ -13,6 +13,13 @@ class App extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    const { contacts, name, number } = this.state;
+    for (let contact of contacts) {
+      if (contact.name === name) {
+        window.alert(`Name: ${name} is already in contacts`);
+        return 0;
+      }
+    }
     this.setState(prevState => {
       // Якщо переглянути стан, переданий callback-функції під час її виклику,
       // отримаємо актуальний стан на момент оновлення.
