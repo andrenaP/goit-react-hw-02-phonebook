@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import ContactInput from './ContactInput';
+import Section from './Section';
 class App extends Component {
   state = {
     contacts: [],
@@ -7,7 +8,14 @@ class App extends Component {
   };
 
   render() {
-    return <div>help</div>;
+    return (
+      <div>
+        <Section title="Phonebook">
+          <ContactInput title="name" />
+        </Section>
+        <Section title="Contacts"></Section>
+      </div>
+    );
   }
 }
 
