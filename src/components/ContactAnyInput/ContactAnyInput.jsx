@@ -10,7 +10,7 @@ const ContactAnyInput = ({
   LableText,
 }) => {
   return (
-    <label htmlFor={name}>
+    <label htmlFor={name} className="ContactAnyInputLabel">
       {LableText}
       <input
         type={type}
