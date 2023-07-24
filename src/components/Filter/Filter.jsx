@@ -4,7 +4,6 @@ import './Filter.css';
 import ContactAnyInput from '../ContactAnyInput';
 
 const Filter = ({ handleChange }) => {
-  let contacts;
   return (
     <ContactAnyInput
       LableText="Find contacts by name"
