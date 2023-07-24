@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-import ContactInput from './ContactInput';
-import ContactsOutput from './ContactsOutput';
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
 import Section from './Section';
+import Filter from './Filter';
 
 class App extends Component {
   state = {
     contacts: [],
-    name: '',
-    number: '',
+    filter: '',
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -20,6 +20,7 @@ class App extends Component {
         contacts: prevState.contacts.concat({
           name: prevState.name,
           number: prevState.number,
+          id: nanoid(),
         }),
       };
     });
@@ -30,17 +31,18 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, name, number } = this.state;
+    const { contacts, name, number, filter } = this.state;
     return (
       <div>
         <Section title="Phonebook">
-          <ContactInput
+          <ContactForm
             Submit={this.handleSubmit}
             handleChange={this.handleChange}
           />
         </Section>
         <Section title="Contacts">
-          <ContactsOutput contacts={contacts} />
+          <Filter handleChange={this.handleChange} />
+          <ContactList contacts={contacts} filter={filter} />
         </Section>
       </div>
     );

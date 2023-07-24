@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
 import './ContactAnyInput.css';
 
-const ContactAnyInput = ({ type, name, pattern, title, handleChange }) => {
+const ContactAnyInput = ({
+  type,
+  name,
+  pattern,
+  title,
+  handleChange,
+  LableText,
+}) => {
   return (
     <label htmlFor={name}>
-      {name}
+      {LableText}
       <input
         type={type}
         name={name}

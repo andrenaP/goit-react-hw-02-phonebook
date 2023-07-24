@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import './ContactInput.css';
-import ContactAnyInput from './ContactAnyInput';
+import './ContactForm.css';
+import ContactAnyInput from '../ContactAnyInput';
 
 const ContactInput = ({ Submit, handleChange }) => {
   return (
     <form action="" className="MainForm" onSubmit={Submit}>
       <ContactAnyInput
+        LableText="name"
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+((['-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я]*)*$"
@@ -13,6 +14,7 @@ const ContactInput = ({ Submit, handleChange }) => {
         handleChange={handleChange}
       />
       <ContactAnyInput
+        LableText="number"
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
