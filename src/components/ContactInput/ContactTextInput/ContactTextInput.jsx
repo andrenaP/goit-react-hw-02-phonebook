@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './ContactTextInput.css';
 
-const ContactTextInput = ({ type, name, pattern, title }) => {
+const ContactTextInput = ({ type, name, pattern, title, handleChange }) => {
   return (
     <label htmlFor="name">
       {name}
@@ -11,6 +11,7 @@ const ContactTextInput = ({ type, name, pattern, title }) => {
         pattern={pattern}
         title={title}
         required
+        onChange={handleChange}
       ></input>
     </label>
   );
