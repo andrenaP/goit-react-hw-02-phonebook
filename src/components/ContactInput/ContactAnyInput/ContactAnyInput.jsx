@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import './ContactTextInput.css';
+import './ContactAnyInput.css';
 
-const ContactTextInput = ({ type, name, pattern, title, handleChange }) => {
+const ContactAnyInput = ({ type, name, pattern, title, handleChange }) => {
   return (
-    <label htmlFor="name">
+    <label htmlFor={name}>
       {name}
       <input
         type={type}
@@ -17,4 +17,4 @@ const ContactTextInput = ({ type, name, pattern, title, handleChange }) => {
   );
 };
 
-export default ContactTextInput;
+export default ContactAnyInput;

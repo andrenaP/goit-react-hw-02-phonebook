@@ -6,9 +6,14 @@ import './ContactsOutput.css';
 const ContactsOutput = ({ contacts }) => {
   return (
     <ul className="ListOfNames">
-      {contacts.map(contact => {
+      {contacts.map(({ name, number }) => {
         let id = nanoid();
-        return <li key={id}>{contact}</li>;
+        return (
+          <li key={id}>
+            <span className="name">{name}</span>
+            <span className="number">{number}</span>
+          </li>
+        );
       })}
     </ul>
   );
