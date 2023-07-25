@@ -11,58 +11,58 @@ class App extends Component {
     contacts: [],
     filter: '',
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    const { contacts, name } = this.state;
-    for (let contact of contacts) {
-      if (contact.name === name) {
-        window.alert(`Name: ${name} is already in contacts`);
-        return 0;
-      }
-    }
-    this.setState(prevState => {
-      // Якщо переглянути стан, переданий callback-функції під час її виклику,
-      // отримаємо актуальний стан на момент оновлення.
-      return {
-        contacts: prevState.contacts.concat({
-          name: prevState.name,
-          number: prevState.number,
-          id: nanoid(),
-        }),
-      };
-    });
-  };
-
-  DoDelete = feedbackType => {
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.filter(
-          contact => contact.name !== feedbackType
-        ),
-      };
-    });
-  };
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
+  handleSubmit = contactData => {
+    const { contacts } = this.state;
+    const { name } = contactData;
+
+    const filterFind = contacts.find(element => {
+      if (element.name.toLowerCase() === name.toLowerCase()) return true;
+    });
+
+    if (filterFind) {
+      window.alert(`Name: ${name} is already in contacts`);
+      return 0;
+    }
+
+    const contactDataWithId = { ...contactData, id: nanoid() };
+
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, contactDataWithId],
+    }));
+
+    // e.target.reset();
+  };
+
+  deleteContact = id => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id),
+      };
+    });
+  };
+
+  visibleContacts = () => {
     const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  render() {
     return (
       <div>
         <Section title="Phonebook">
-          <ContactForm
-            Submit={this.handleSubmit}
-            handleChange={this.handleChange}
-          />
+          <ContactForm onSubmit={this.handleSubmit} />
         </Section>
         <Section title="Contacts">
           <Filter handleChange={this.handleChange} />
           <ContactList
-            contacts={contacts}
-            filter={filter}
-            DoDelete={this.DoDelete}
+            contacts={this.visibleContacts()}
+            deleteFunc={this.deleteContact}
           />
         </Section>
       </div>
