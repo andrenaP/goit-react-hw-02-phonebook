@@ -19,9 +19,9 @@ class App extends Component {
     const { contacts } = this.state;
     const { name } = contactData;
 
-    const filterFind = contacts.find(element => {
-      if (element.name.toLowerCase() === name.toLowerCase()) return true;
-    });
+    const filterFind = contacts.find(
+      element => element.name.toLowerCase() === name.toLowerCase()
+    );
 
     if (filterFind) {
       window.alert(`Name: ${name} is already in contacts`);
